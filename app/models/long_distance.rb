@@ -1,0 +1,2 @@
+class LongDistance < Appointment
+end

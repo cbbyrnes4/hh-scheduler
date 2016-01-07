@@ -1,0 +1,37 @@
+<% @page_title = "Appointments" %>
+
+<!-- <%= link_to("<< Back to Menu", {:controller => 'access', :action => 'index'}, :class => 'back-link') %> -->
+
+<div class="apppointment index">
+  <h2>Appointments</h2>
+
+  <!-- <%= link_to("Add New Admin User", {:action => 'new'}, :class => 'action new') %> -->
+
+  <div><%= pluralize(@appointments.size, 'Appointments') %> found</div>
+  <table class="listing" summary="appointment list">
+    <tr class="header">
+      <th>Date</th>
+      <th>Time</th>
+      <th>Customer Name</th>
+      <th>Job Size</th>
+      <th>Type</th>
+      <th>Address</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Zip</th>
+    </tr>
+    <% @appointments.each do |apt| %>
+    <tr class="<%= cycle('odd', 'even') %>">
+      <td><%= apt.date %></td>
+      <td><%= apt.time %></td>
+      <td><%= apt.name %></td>
+      <td><%= apt.job_size %></td>
+      <td><%= apt.type %></td>
+      <td><%= apt.street_address %></td>
+      <td><%= apt.city %></td>
+      <td><%= apt.state %></td>
+      <td><%= apt.zip %></td>
+    </tr>
+    <% end %>
+  </table>
+</div>

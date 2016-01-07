@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Hired Hands Scheduling Application</title>
+			<%= stylesheet_link_tag('application', :media => 'all') %>
+	  	<%= javascript_include_tag('application', 'data-turbolinks-track' => true) %>
+	  	<%= csrf_meta_tags %>
+	  	<!--[if lt IE 9]>
+	      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js"></script>
+	    <![endif]-->
+	</head>
+	<body>
+		<header class="navbar navbar-fixed-top">
+	  <div class="container">
+
+	  </div>
+		</header>
+
+		<!-- Begin page content -->
+		<div class="container">
+			<% if !flash[:notice].blank? %>
+			<div class="alert alert-danger alert-dismissable" role="alert">
+				<%= flash[:notice] %>
+			</div>
+			<% end %>
+			<%= yield %>
+		</div>
+		    
+		<footer class="footer">
+      <div class="container">
+        <p class="text-muted">&copy; Chaz Byrnes | studentagencies.com</p>
+      </div>
+    </footer>
+		
+	</body>
+</html>
+
+
