@@ -1,9 +1,7 @@
 class Appointment < ActiveRecord::Base
 	has_and_belongs_to_many :employees, join_table: "appointments_employees", polymorphic: true
 
-	# change DB to support datetime, remove `date` and `time` columns
-	# add `actual_time` column for wage tracking
-	scope :sort_by_time, lambda { order('appointments.date', 'appointments.time') }
+	scope :sort_by_time, lambda { order('appointments.datetime') }
 	scope :sort_by_customer_name, lambda { order('appointments.customer_last_name', 'appointments.customer_first_name') }
 	scope :active, lambda { where(:status => 'active') }
 	scope :inactive, lambda { where(:status => 'inactive') }

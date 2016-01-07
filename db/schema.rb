@@ -11,25 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160105165826) do
+ActiveRecord::Schema.define(version: 20160107022852) do
 
   create_table "appointments", force: :cascade do |t|
-    t.string   "customer_first_name", limit: 64,                null: false
-    t.string   "customer_last_name",  limit: 64,                null: false
-    t.string   "street_address",                                null: false
-    t.string   "city",                                          null: false
-    t.string   "state",                                         null: false
-    t.string   "zip",                                           null: false
-    t.string   "type"
+    t.string   "customer_first_name", limit: 64,                   null: false
+    t.string   "customer_last_name",  limit: 64,                   null: false
+    t.string   "street_address",                                   null: false
+    t.string   "city",                                             null: false
+    t.string   "state",                                            null: false
+    t.string   "zip",                                              null: false
+    t.string   "type",                           default: "Local"
     t.string   "status"
     t.integer  "job_size"
     t.integer  "estimated_time"
-    t.datetime "created_at",                                    null: false
-    t.datetime "updated_at",                                    null: false
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
     t.boolean  "visibility",                     default: true
-    t.date     "date"
-    t.time     "time"
     t.integer  "current_size",                   default: 0
+    t.datetime "datetime"
+    t.integer  "actual_time"
+    t.text     "notes"
   end
 
   create_table "appointments_employees", id: false, force: :cascade do |t|

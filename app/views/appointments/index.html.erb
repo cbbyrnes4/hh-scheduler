@@ -22,8 +22,8 @@
     </tr>
     <% @appointments.each do |apt| %>
     <tr class="<%= cycle('odd', 'even') %>">
-      <td><%= apt.date %></td>
-      <td><%= apt.time %></td>
+      <td><%= if apt.datetime != nil then apt.datetime.strftime("%m/%d/%Y") end %></td>
+      <td><%= if apt.datetime != nil then apt.datetime.strftime("%l:%M %P") end %></td>
       <td><%= apt.name %></td>
       <td><%= apt.job_size %></td>
       <td><%= apt.type %></td>
