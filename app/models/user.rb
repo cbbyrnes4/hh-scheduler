@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
 	scope :sort_name, lambda { order("users.last_name, users.first_name") }
 	scope :active, lambda { where(:status => 'active') }
 	scope :inactive, lambda { where(:status => 'inactive') }
+	scope :unconfirmed, lambda { where(:status => 'unconfirmed') }
 	
 	validates :email, :uniqueness => true
 

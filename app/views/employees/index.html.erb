@@ -1,43 +1,67 @@
-<% @page_title = "Appointments" %>
+<% @page_title = "Employees" %>
 
-<div class="appointment index">
-  <h3>Active Employees</h3>
-  <div class="group">
-    <%= link_to("Add new Employee", {:action => 'new'}, :class => 'action new') %>
-    <div><%= pluralize(@employees_active.size, 'Employee') %> found</div>
-  </div>
-  
-  <table class="listing table table-bordered table-condensed" summary="active employee list">
-    <tr class="header">
-      <th>Type</th>
-      <th>Name</th>
-      <th>Email</th>
-    </tr>
-    <% @employees_active.each do |employee| %>
-    <tr class="hover <%= cycle('odd', 'even', name: 'stripes' ) %><%= ' strike' if employee.status == 'inactive'%>">
-      <td><%= employee.type %></td>
-      <td><%= employee.name %></td>
-      <td><%= employee.email %></td>
-    </tr>
-    <% end %>
-  </table>
-
-  <div class="<%= if @employees_inactive.size > 0 then 'show' else 'hide' end %>">
-    <% reset_cycle('stripes') %>
-    <h3>Inactive Employees</h3>
-    <table class="listing table table-bordered table-condensed" summary="inactive employee list">
+<div class="index">
+  <div class="condense">
+    <h3>Active Employees</h3>
+    <div class="group">
+      <%= link_to("Add new Employee", {:action => 'new'}, :class => 'action new') %>
+      <div><%= pluralize(@employees_active.size, 'Employee') %> found</div>
+      <a href="#" class="<%= if @employees.unconfirmed.size > 0 then 'show' else 'hidden' end %>"onclick="$('#unconfirmedEmployees').toggleClass('hidden');">Show/Hide Unconfirmed Employees</a>
+      <a href="#" class="<%= if @employees_inactive.size > 0 then 'show' else 'hidden' end %>" onclick="$('#inactiveEmployees').toggleClass('hidden');">Show/Hide Inactive Employees</a>
+    </div>
+    
+    <table class="listing table table-condensed" summary="active employee list">
       <tr class="header">
-        <th>Type</th>
+        <th>Role</th>
         <th>Name</th>
         <th>Email</th>
       </tr>
-      <% @employees_inactive.each do |employee| %>
-      <tr class="hover <%= cycle('odd', 'even') %>">
+      <% @employees_active.each do |employee| %>
+      <tr class="hover <%= cycle('odd', 'even', name: 'stripes' ) %><%= ' strike' if employee.status == 'inactive'%>">
         <td><%= employee.type %></td>
         <td><%= employee.name %></td>
         <td><%= employee.email %></td>
       </tr>
       <% end %>
     </table>
+
+    <div class="hidden" id="unconfirmedEmployees">
+      <% reset_cycle('stripes') %>
+      <h3>Unconfirmed Employees</h3>
+      <table class="listing table table-condensed" summary="inactive employee list">
+        <tr class="header">
+          <th>Role</th>
+          <th>Name</th>
+          <th>Email</th>
+        </tr>
+        <% @employees.unconfirmed.sort_by_type.sort_name.each do |employee| %>
+        <tr class="hover <%= cycle('odd', 'even', name: 'stripes') %>">
+          <td><%= employee.type %></td>
+          <td><%= employee.name %></td>
+          <td><%= employee.email %></td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+
+    <div class="hidden" id="inactiveEmployees">
+      <% reset_cycle('stripes') %>
+      <h3>Inactive Employees</h3>
+      <table class="listing table table-condensed" summary="inactive employee list">
+        <tr class="header">
+          <th>Role</th>
+          <th>Name</th>
+          <th>Email</th>
+        </tr>
+        <% @employees_inactive.each do |employee| %>
+        <tr class="hover <%= cycle('odd', 'even', name: 'stripes') %>">
+          <td><%= employee.type %></td>
+          <td><%= employee.name %></td>
+          <td><%= employee.email %></td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+
   </div>
 </div>

@@ -3,90 +3,98 @@
 <%= link_to("<< Back to Appointments", appointments_path, :class => 'back-link') %>
 
 <div class="appointments show">
-  <h2>Show Appointment</h2>
+  <div class="condense">
+    <h2>Show Appointment</h2>
 
-  <table class="table table-bordered table-condensed"summary="appointment detail view">
-    <tr>
-      <th>Date and Time</th>
-      <td><%= @appointment.datetime.strftime('%m/%d/%Y %H:%M') %></td>
-    </tr>
-    <tr>
-      <th>Customer Name</th>
-      <td><%= @appointment.name %></td>
-    </tr>
-    <tr>
-      <th>Customer Email</th>
-      <td><%= @appointment.email %></td>
-    </tr>
-    <tr>
-      <th>Customer Phone</th>
-      <td><%= @appointment.phone_number %></td>
-    </tr>
-    <tr>
-      <th>Street Address</th>
-      <td><%= @appointment.street_address %></td>
-    </tr>
-    <tr>
-      <th>City</th>
-      <td><%= @appointment.city %></td>
-    </tr>
-    <tr>
-      <th>State</th>
-      <td><%= @appointment.state %></td>
-    </tr>
-    <tr>
-      <th>Zip</th>
-      <td><%= @appointment.zip %></td>
-    </tr>
-    <tr>
-      <th>Appointment Type</th>
-      <td><%= @appointment.type %></td>
-    </tr>
-    <tr>
-      <th>Status</th>
-      <td><%= @appointment.status %></td>
-    </tr>
-    <tr>
-      <th>Job Size</th>
-      <td><%= @appointment.job_size %></td>
-    </tr>
-    <tr>
-      <th>Estimated Time</th>
-      <td><%= @appointment.estimated_time %></td>
-    </tr>
-    <tr>
-      <th>Created At</th>
-      <td><%= @appointment.created_at.strftime('%m/%d/%Y %H:%M') %></td>
-    </tr>
-    <tr>
-      <th>Updated At</th>
-      <td><%= @appointment.updated_at.strftime('%m/%d/%Y %H:%M') %></td>
-    </tr>
-    <tr>
-      <th>Visibility</th>
-      <td><%= @appointment.visibility %></td>
-    </tr>
-    <tr>
-      <th>Notes</th>
-      <td><%= @appointment.notes %></td>
-    </tr>
-  </table>
-
-  <div class="<%= if @appointment.employees.size > 0 then 'show' else 'hide' end %>">
-    <h3>Employees</h3>
-    <table class="listing table table-bordered table-condensed" summary="active employee list">
-    <tr class="header">
-      <th>Type</th>
-      <th>Name</th>
-      <th>Email</th>
-    </tr>
-    <% @appointment.employees.sort_name.each do |employee| %>
-    <tr class="hover <%= cycle('odd', 'even', name: 'stripes' ) %><%= ' strike' if employee.status == 'inactive'%>">
-      <td><%= employee.type %></td>
-      <td><%= employee.name %></td>
-      <td><%= employee.email %></td>
-    </tr>
-    <% end %>
+    <table class="table table-bordered table-condensed"summary="appointment detail view">
+      <tr>
+        <th>Date and Time</th>
+        <td><%= @appointment.datetime.strftime('%m/%d/%Y %H:%M') %></td>
+      </tr>
+      <tr>
+        <th>Customer Name</th>
+        <td><%= @appointment.name %></td>
+      </tr>
+      <tr>
+        <th>Customer Email</th>
+        <td><%= @appointment.email %></td>
+      </tr>
+      <tr>
+        <th>Customer Phone</th>
+        <td><%= @appointment.phone_number %></td>
+      </tr>
+      <tr>
+        <th>Street Address</th>
+        <td><%= @appointment.street_address %></td>
+      </tr>
+      <tr>
+        <th>City</th>
+        <td><%= @appointment.city %></td>
+      </tr>
+      <tr>
+        <th>State</th>
+        <td><%= @appointment.state %></td>
+      </tr>
+      <tr>
+        <th>Zip</th>
+        <td><%= @appointment.zip %></td>
+      </tr>
+      <tr>
+        <th>Appointment Type</th>
+        <td><%= @appointment.type %></td>
+      </tr>
+      <tr>
+        <th>Status</th>
+        <td><%= @appointment.status %></td>
+      </tr>
+      <tr>
+        <th>Job Size</th>
+        <td><%= @appointment.job_size %></td>
+      </tr>
+      <tr>
+        <th>Estimated Time</th>
+        <td><%= @appointment.estimated_time %></td>
+      </tr>
+      <% if @appointment.actual_time != nil %>
+      <tr>
+        <th>Actual Time</th>
+        <td><%= @appointment.actual_time %></td>
+      </tr>
+      <% end %>
+      <tr>
+        <th>Created At</th>
+        <td><%= @appointment.created_at.strftime('%m/%d/%Y %H:%M') %></td>
+      </tr>
+      <tr>
+        <th>Updated At</th>
+        <td><%= @appointment.updated_at.strftime('%m/%d/%Y %H:%M') %></td>
+      </tr>
+      <tr>
+        <th>Visibility</th>
+        <td><%= @appointment.visibility %></td>
+      </tr>
+      <tr>
+        <th>Notes</th>
+        <td><%= @appointment.notes %></td>
+      </tr>
     </table>
+
+    <div class="<%= if @appointment.employees.size > 0 then 'show' else 'hide' end %>">
+      <h3>Employees</h3>
+      <table class="listing table table-condensed" summary="active employee list">
+      <tr class="header">
+        <th>Type</th>
+        <th>Name</th>
+        <th>Email</th>
+      </tr>
+      <% @appointment.employees.sort_name.each do |employee| %>
+      <tr class="hover <%= ' strike' if employee.status == 'inactive'%>">
+        <td><%= employee.type %></td>
+        <td><%= employee.name %></td>
+        <td><%= employee.email %></td>
+      </tr>
+      <% end %>
+      </table>
+    </div>
   </div>
 </div>

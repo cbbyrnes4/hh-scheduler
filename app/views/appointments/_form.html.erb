@@ -29,7 +29,7 @@
       <%= f.select(:type, options_for_select(['Local','LongDistance','Labor'], 1)) %>
     <div class="form-group">
       <%= f.label(:job_size) %>
-      <%= f.text_field(:job_size, :class => 'appointment form-control') %>
+      <%= f.select(:job_size, %w[2 3 4 5 6 7], :class => 'appointment form-control') %>
     </div>
     <div class="form-group">
       <%= f.label(:estimated_time) %>
@@ -78,7 +78,7 @@
   <div>
     <p>Notes</p>
     <div class="form-group">
-      <%= f.text_area(:notes, :size => '20x5', :class => 'appointment form-control') %>
+      <%= f.text_area(:notes, :size => '30x5', :class => 'appointment form-control') %>
     </div>
   </div>
 </div>
