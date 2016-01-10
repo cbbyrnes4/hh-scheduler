@@ -55,6 +55,15 @@ Rails.application.routes.draw do
   #   end
 
   # root 'appointment#index'
+
+  resources :appointments do
+    member do
+      get :delete
+    end
+  end
+
   match ':controller(/:action(/:id))', :via => [:get, :post]
+
+  # edit ^^^^^^^^^^^^^^^^^^
   
 end

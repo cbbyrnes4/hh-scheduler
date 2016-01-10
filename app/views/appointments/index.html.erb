@@ -1,37 +1,47 @@
 <% @page_title = "Appointments" %>
 
-<!-- <%= link_to("<< Back to Menu", {:controller => 'access', :action => 'index'}, :class => 'back-link') %> -->
-
-<div class="apppointment index">
-  <h2>Appointments</h2>
-
-  <!-- <%= link_to("Add New Admin User", {:action => 'new'}, :class => 'action new') %> -->
-
-  <div><%= pluralize(@appointments.size, 'Appointments') %> found</div>
-  <table class="listing" summary="appointment list">
+<div class="appointment index">
+  <h3>Active Appointments</h3>
+  <div class="group">
+    <%= link_to("Add new Appointment", new_appointment_path, :class => "action new") %>
+    <div><%= pluralize(@appointments_active.size, 'Appointment') %> found</div>
+  </div>
+  
+  <table class="listing table table-bordered table-condensed" summary="appointment list">
     <tr class="header">
       <th>Date</th>
       <th>Time</th>
-      <th>Customer Name</th>
-      <th>Job Size</th>
+      <th><span class="stack">Estimated</span> Hours</th>
       <th>Type</th>
-      <th>Address</th>
-      <th>City</th>
-      <th>State</th>
-      <th>Zip</th>
     </tr>
-    <% @appointments.each do |apt| %>
-    <tr class="<%= cycle('odd', 'even') %>">
-      <td><%= if apt.datetime != nil then apt.datetime.strftime("%m/%d/%Y") end %></td>
-      <td><%= if apt.datetime != nil then apt.datetime.strftime("%l:%M %P") end %></td>
-      <td><%= apt.name %></td>
-      <td><%= apt.job_size %></td>
+    <% @appointments_active.each do |apt| %>
+    <tr data-url="<%= appointment_path(apt.id) %>" class="clickable-row hover <%= cycle('odd', 'even', name: 'stripes') %>">
+      <td><%= if apt.datetime then apt.datetime.strftime('%m/%d/%Y') end %></td>
+      <td><%= if apt.datetime then apt.datetime.strftime('%H:%M') end %></td>
+      <td><%= apt.estimated_time %></td>
       <td><%= apt.type %></td>
-      <td><%= apt.street_address %></td>
-      <td><%= apt.city %></td>
-      <td><%= apt.state %></td>
-      <td><%= apt.zip %></td>
     </tr>
     <% end %>
   </table>
+
+  <div class="<%= if @appointments_inactive.size > 0 then 'show' else 'hide' end %>">
+    <% reset_cycle('stripes') %>
+    <h3>Inactive Appointments</h3>
+    <table class="listing table table-bordered table-condensed" summary="appointment list">
+      <tr class="header">
+        <th>Date</th>
+        <th>Time</th>
+        <th><span class="stack">Estimated</span> Hours</th>
+        <th>Type</th>
+      </tr>
+      <% @appointments_inactive.each do |apt| %>
+      <tr data-url="<%= appointment_path(apt.id) %>" class="clickable-row hover <%= cycle('odd', 'even') %>">
+        <td><%= if apt.datetime then apt.datetime.strftime('%m/%d/%Y') end %></td>
+        <td><%= if apt.datetime then apt.datetime.strftime('%H:%M') end %></td>
+        <td><%= apt.estimated_time %></td>
+        <td><%= apt.type %></td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
 </div>

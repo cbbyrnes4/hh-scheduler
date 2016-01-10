@@ -1,10 +1,11 @@
 class User < ActiveRecord::Base
 
-	has_secure_password
+	# has_secure_password
 
 	scope :sort_name, lambda { order("users.last_name, users.first_name") }
-	scope :sort_active, lambda { order("users.status")}
-
+	scope :active, lambda { where(:status => 'active') }
+	scope :inactive, lambda { where(:status => 'inactive') }
+	
 	validates :email, :uniqueness => true
 
 	def name

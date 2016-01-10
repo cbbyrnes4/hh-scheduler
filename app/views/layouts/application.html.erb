@@ -3,23 +3,38 @@
 	<head>
 		<title>Hired Hands Scheduling Application</title>
 			<%= stylesheet_link_tag('application', :media => 'all') %>
-	  	<%= javascript_include_tag('application', 'data-turbolinks-track' => true) %>
-	  	<%= csrf_meta_tags %>
+		  <%= javascript_include_tag('application', 'data-turbolinks-track' => true) %>
+		  <%= csrf_meta_tags %>
 	  	<!--[if lt IE 9]>
 	      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js"></script>
 	    <![endif]-->
 	</head>
 	<body>
-		<header class="navbar navbar-fixed-top">
-		  <div class="container">
-		  	<h1>Hired Hands Moving Company</h1>
-		  </div>
-		</header>
+		<div class="navbar navbar-fixed-top"> 
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<p class="navbar-brand">Hired Hands Scheduler</p>
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+				</div>
+				<div class="collapse navbar-collapse">
+					<ul class="nav navbar-nav">
+						<li class="<%= 'active' if current_page?(:controller => 'appointments') %>"><a href="/appointments">Appointments</a></li>
+						<li class="<%= 'active' if current_page?(:controller => 'employees') %>"><a href="/employees">Employees</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
 
 		<!-- Begin page content -->
 		<div class="container">
 			<% if !flash[:notice].blank? %>
-			<div class="alert alert-danger alert-dismissable" role="alert">
+			<div class="alert alert-success alert-dismissable" role="alert">
+				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 				<%= flash[:notice] %>
 			</div>
 			<% end %>
@@ -27,12 +42,11 @@
 		</div>
 		    
 		<footer class="footer">
-      <div class="container">
-        <p class="text-muted">&copy; Chaz Byrnes | studentagencies.com</p>
-      </div>
-    </footer>
+	    <div class="container">
+	      <p class="text-muted">&copy; 2016 Chaz Byrnes | <a target="_blank" href="http://www.studentagencies.com/">studentagencies.com</a></p>
+	    </div>
+	  </footer>
 		
 	</body>
 </html>
-
 

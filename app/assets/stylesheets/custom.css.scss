@@ -1,5 +1,4 @@
-@import 'bootstrap-sprockets';
-@import 'bootstrap';
+ 
 
 /* Sticky footer styles
 -------------------------------------------------- */
@@ -8,15 +7,15 @@ html {
   min-height: 100%;
 }
 body {
-  /* Margin bottom by footer height */
   margin-bottom: 60px;
 }
+
 .footer {
   position: absolute;
   bottom: 0;
   width: 100%;
   /* Set the fixed height of the footer here */
-  height: 40px;
+  height: 60px;
   background-color: #f5f5f5;
 }
 
@@ -28,6 +27,7 @@ body {
 body > .container {
   padding: 60px 15px 0;
 }
+
 .container .text-muted {
   margin: 20px 0;
 }
@@ -37,20 +37,118 @@ body > .container {
   padding-left: 15px;
 }
 
-code {
-  font-size: 80%;
-}
+/* --------------------All------------------------ */
 .odd {
-	background-color: #F90;
-}
-table {
-	width: 100%;
-}
-header.navbar {
-	background-color: #283DB1;
+	background-color: rgba(255,153,0,0.6);
 }
 
-.navbar h1 {
-	color: white;
-	text-align: center;
+.navbar {
+  background-color: #283DB1;
+  box-shadow: 0px 1px 4px 1px #666;
+  margin-bottom: 15px;
+  height: 40px;
 }
+
+h2 {
+  font-family: 'Lato', san-serif;
+}
+
+.navbar-brand, 
+.navbar-nav li a { color: white; }
+.navbar-brand { font-family: 'Lobster', cursive; }
+.navbar-nav li a { font-family: 'Lato', san-serif; }
+li.active a { /*background-color: #777;*/ color: rgb(255,153,0); }
+li a:hover { color: rgb(255,153,0); }
+.strike { text-decoration: line-through; }
+
+@media (max-width: 768px) { 
+  .stack {
+    display:block;
+  }
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 60px;
+}
+
+table tr {
+  height: 40px;  
+  border-radius: 3px;
+}
+
+table tr.hover:hover {
+  background-color: rgb(255,153,0);
+}
+
+tr.clickable-row {
+  cursor: pointer;
+}
+
+table.striped tr:nth-child(odd) {
+  background-color: rgba(255,153,0,0.6);
+}
+
+div.hide {
+  display: none;
+}
+
+div.show {
+  display: inline;
+  margin: 40px 0;
+}
+
+/* ----For /appointments/index.html.erb---------- */
+
+a.action {
+  display: block;
+  float: right;
+}
+
+.group {
+  margin-bottom: 5px;
+}
+
+h3 {
+  text-align: center;
+  font-family: 'Lato', san-serif;
+}
+
+/* ----For /appointments/new.html.erb----------- */
+
+label {
+  display: block;
+  font-size: 0.8em;
+  float: left;
+  margin-right: 5px;
+  margin-bottom: 1px;
+  text-decoration: none;
+}
+
+input, div #appointment_type {
+  display: block;
+}
+
+#appointment_type {
+  margin-bottom: 15px;
+}
+
+div.form-group {
+  display: inline-block;
+  margin-right: 10px;
+  margin-bottom: 15px;
+}
+
+.container > p {
+  margin-bottom: 3px;
+}
+
+#appointment_zip, #appointment_job_size, #appointment_estimated_time {
+  width: 75px;
+}
+/*
+th {
+  background-color: rgb(40,61,177);
+  color: white;
+}*/

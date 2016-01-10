@@ -1,12 +1,16 @@
 class Appointment < ActiveRecord::Base
 	has_and_belongs_to_many :employees, join_table: "appointments_employees", polymorphic: true
 
+	accepts_nested_attributes_for :employees
+
 	scope :sort_by_time, lambda { order('appointments.datetime') }
 	scope :sort_by_customer_name, lambda { order('appointments.customer_last_name', 'appointments.customer_first_name') }
 	scope :active, lambda { where(:status => 'active') }
 	scope :inactive, lambda { where(:status => 'inactive') }
 	scope :visible, lambda { where(:visibility => true) }
 	scope :invisible, lambda { where(:visibility => false) }
+
+	EMAIL_REGEX = /\A[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}\Z/i
 
 	validates :customer_first_name, :presence => true, :length => { :maximum => 64 }
 	validates :customer_last_name, :presence => true, :length => { :maximum => 64 }
@@ -17,6 +21,8 @@ class Appointment < ActiveRecord::Base
 	validates :job_size, :presence => true, :numericality => { :greater_than_or_equal_to => 2, :less_than_or_equal_to => 7 }
 	validates :current_size, :presence => true
 	validates :current_size, :numericality => { :less_than_or_equal_to => :job_size }
+	validates :email, :format => EMAIL_REGEX
+	validates :phone_number, :presence => true
 
 	def add_employee(id)
 		employee = Employee.find(id)

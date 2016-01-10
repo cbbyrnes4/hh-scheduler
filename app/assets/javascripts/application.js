@@ -11,7 +11,17 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery-ui
 //= require jquery_ujs
-//= require bootstrap-sprockets
+//= require bootstrap
 //= require turbolinks
+//= require appointments
+//= require employees
 //= require_tree .
+
+jQuery(document).ready(function($) {
+    $(".clickable-row").click(function() {
+        window.document.location = $(this).data("url");
+    });
+});
+
