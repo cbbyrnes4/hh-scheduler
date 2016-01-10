@@ -27,6 +27,8 @@ gem 'twilio-ruby'
 
 gem 'normalize-rails'
 
+gem 'jquery-turbolinks'
+
 gem 'bootstrap-sass', '~> 3.3.6'
 
 gem 'jquery-ui-rails'

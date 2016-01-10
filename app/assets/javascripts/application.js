@@ -10,18 +10,9 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require_self
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap
-//= require appointments
 //= require_tree .
-
-
-// jQuery(document).ready(function($) {
-//     $(".clickable-row").click(function() {
-//         window.document.location = $(this).data("url");
-//     });
-// });
 

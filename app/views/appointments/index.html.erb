@@ -6,8 +6,9 @@
     <div class="group">
       <%= link_to("Add new Appointment", new_appointment_path, :class => "action new") %>
       <div><%= pluralize(@appointments_active.size, 'Appointment') %> found</div>
-      <a href="#" class="<%= if @appointments_inactive.size > 0 then 'show' else 'hide' end %>" id="showComplete" onclick="$('#completeAppointments').toggleClass('hidden');">Show/Hide Completed Appointments</a>
+      <a href="#" id="showComplete" class="<%= if @appointments_inactive.size > 0 then 'show' else 'hide' end %>" id="showComplete">Show Completed Appointments</a>
     </div>
+
     <table class="listing table table-condensed appointment" summary="appointment list">
       <tr class="header">
         <th>Date</th>

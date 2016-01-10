@@ -6,8 +6,8 @@
     <div class="group">
       <%= link_to("Add new Employee", {:action => 'new'}, :class => 'action new') %>
       <div><%= pluralize(@employees_active.size, 'Employee') %> found</div>
-      <a href="#" class="<%= if @employees.unconfirmed.size > 0 then 'show' else 'hidden' end %>"onclick="$('#unconfirmedEmployees').toggleClass('hidden');">Show/Hide Unconfirmed Employees</a>
-      <a href="#" class="<%= if @employees_inactive.size > 0 then 'show' else 'hidden' end %>" onclick="$('#inactiveEmployees').toggleClass('hidden');">Show/Hide Inactive Employees</a>
+      <a href="#" class="<%= if @employees.unconfirmed.size > 0 then 'show' else 'hidden' end %>"id="showUnconfirmed">Show Unconfirmed Employees</a>
+      <a href="#" class="<%= if @employees_inactive.size > 0 then 'show' else 'hidden' end %>" id="showInactive">Show Inactive Employees</a>
     </div>
     
     <table class="listing table table-condensed" summary="active employee list">
