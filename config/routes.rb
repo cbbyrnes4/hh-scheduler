@@ -62,6 +62,12 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :employees do
+    member do
+      get :delete
+    end
+  end
+
   match ':controller(/:action(/:id))', :via => [:get, :post]
 
   # edit ^^^^^^^^^^^^^^^^^^

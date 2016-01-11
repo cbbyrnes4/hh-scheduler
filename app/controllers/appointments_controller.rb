@@ -14,7 +14,7 @@ class AppointmentsController < ApplicationController
     if @appointment.save
       # If save succeeds, redirect to the index action
       flash[:notice] = "Appointment created successfully."
-      redirect_to(:action => 'index')
+      redirect_to(appointments_path)
     else
       # If save fails, redisplay the form so user can fix problems
       render('new')
@@ -23,6 +23,34 @@ class AppointmentsController < ApplicationController
 
   def show
     @appointment = Appointment.find(params[:id]) 
+  end
+
+  def edit
+    @appointment = Appointment.find(params[:id])
+  end
+
+  def update
+    # Find an existing object using form parameters
+    @appointment = Appointment.find(params[:id])
+    # Update the object
+    if @appointment.update_attributes(appointment_params)
+      # If update succeeds, redirect to the index action
+      flash[:notice] = "Appointment updated successfully."
+      redirect_to(appointment_path(@appointment.id))
+    else
+      # If update fails, redisplay the form so user can fix it
+      render('edit')
+    end
+  end
+
+  def delete
+    @appointment = Appointment.find(params[:id])
+  end
+
+  def destroy
+    appointment = Appointment.find(params[:id]).destroy
+    flash[:notice] = "Appointment #{appointment.id} for #{appointment.name} destroyed successfully"
+    redirect_to(appointments_path)
   end
 
 	private

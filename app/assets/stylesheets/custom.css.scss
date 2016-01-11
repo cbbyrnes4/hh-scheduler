@@ -1,4 +1,4 @@
- /* --------------------All------------------------ */
+/* --------------------All------------------------ */
 html { position: relative; min-height: 100%; }
 body { margin-bottom: 60px; }
 
@@ -6,7 +6,6 @@ body { margin-bottom: 60px; }
   position: absolute;
   bottom: 0;
   width: 100%;
-  /* Set the fixed height of the footer here */
   height: 60px;
   background-color: #f5f5f5;
 }
@@ -28,7 +27,7 @@ h2 { font-family: 'Lato', san-serif; }
 .navbar-nav li a { color: white; }
 .navbar-brand { font-family: 'Lobster', cursive; }
 .navbar-nav li a { font-family: 'Lato', san-serif; }
-li.active a { /*background-color: #777;*/ color: rgb(255,153,0); }
+li.active a { color: rgb(255,153,0); }
 li a:hover { color: rgb(255,153,0); }
 .strike { text-decoration: line-through; }
 
@@ -41,16 +40,12 @@ table.table {
   margin-right: auto;
 }
 
-
-
-div.condense {
-  width: 70%;
-  margin: 0 auto;
-}
-
-table tr.hover:hover {
-  transition: box-shadow 0.2s ease;
-}
+.highlight { font-weight: bold; color: red; }
+.right { float: right; margin-bottom: 5px; margin-right: 5px; }
+.btn-control { float: right; }
+.form-buttons { margin-bottom: 5px; }
+div.condense { width: 70%; margin: 0 auto; }
+table tr.hover:hover { transition: box-shadow 0.2s ease; }
 
 table tr.hover:hover {
   background-color: rgb(255,153,0);
@@ -59,40 +54,36 @@ table tr.hover:hover {
   box-shadow: 0 0 3px #666;
 }
 
-tr.clickable-row {
-  cursor: pointer;
+tr.clickable-row { cursor: pointer; }
+table.striped tr:nth-child(odd) { background-color: rgba(255,153,0,0.6); }
+.hidden { display: none; }
+div.show { display: inline; margin: 40px 0; }
+.index { margin: 0 auto; }
+
+label {
+  display: block;
+  font-size: 0.8em;
+  float: left;
+  margin-right: 5px;
+  margin-bottom: 1px;
+  text-decoration: none;
 }
 
-table.striped tr:nth-child(odd) {
-  background-color: rgba(255,153,0,0.6);
+.clear {
+  clear: both;
 }
 
-.hidden {
-  display: none;
-}
-
-div.show {
-  display: inline;
-  margin: 40px 0;
-}
-
-.index {
-  margin: 0 auto;
-}
+/* th { background-color: rgb(40,61,177); color: white; }*/
 
 @media (max-width: 768px) { 
-  .stack {
-    display:block;
-  }
-  div.condense {
-    width: 100%;
-  }
-  .responsive-hide {
-    display:none;
-  }
+  .stack { display:block; }
+  div.condense { width: 100%; }
+  .responsive-hide { display:none; }
+  .responsive-shift { margin: 0 auto; display: inline-block;}
+  .btn-control { width: 100%; margin: 15px auto; display: block; }
 }
 
-/* ----For /appointments/index.html.erb---------- */
+/* ----For app/assets/stylesheets/appointments.scss---------- */
 
 a.action {
   display: block;
@@ -114,26 +105,14 @@ h3 {
   }
 }*/
 
-
-/* ----For /appointments/new.html.erb----------- */
-
-label {
-  display: block;
-  font-size: 0.8em;
-  float: left;
-  margin-right: 5px;
-  margin-bottom: 1px;
-  text-decoration: none;
-}
-
-input, div #appointment_type {
+/*input, div #appointment_type {
   display: block;
 }
 
 #appointment_type {
   margin-bottom: 15px;
 }
-
+*/
 div.form-group {
   display: inline-block;
   margin-right: 10px;
@@ -147,8 +126,10 @@ div.form-group {
 #appointment_zip, #appointment_job_size, #appointment_estimated_time {
   width: 75px;
 }
-/*
-th {
-  background-color: rgb(40,61,177);
-  color: white;
-}*/
+
+/* ----For app/assets/stylesheets/employees.scss---------- */
+
+
+#employee_type {
+  display: block;
+}

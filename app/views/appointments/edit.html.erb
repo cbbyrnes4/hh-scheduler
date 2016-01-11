@@ -1,0 +1,17 @@
+<% @page_title = "Update Appointment" %>
+
+<%= link_to("<< Back to Appointment", appointment_path(@appointment.id), :class => 'back-link') %>
+
+<div class="appointment edit">
+  <h2>Update Appointment</h2>
+
+  <%= form_for(:appointment, :url => appointment_path(@appointment.id), :method =>'patch') do |f| %>
+
+    <%= render(:partial => "update_form", :locals => {:f => f}) %>
+
+    <div class="form-buttons">
+      <%= submit_tag("Update Appointment", :class => "btn btn-md btn-primary form-buttons") %>
+    </div>
+
+  <% end %>
+</div>

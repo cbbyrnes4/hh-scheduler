@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 	scope :inactive, lambda { where(:status => 'inactive') }
 	scope :unconfirmed, lambda { where(:status => 'unconfirmed') }
 	
-	validates :email, :uniqueness => true
+	validates :email, :presence => true, :uniqueness => true
 
 	def name
 		"#{first_name} #{last_name}"

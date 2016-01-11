@@ -1,0 +1,33 @@
+<%= error_messages_for(@employee) %>
+<div class="container-fluid">
+  <div>
+    <p>Employee Information</p>
+    <div class="form-group">
+      <%= f.label(:first_name, "First name") %>
+      <%= f.text_field(:first_name, :class => 'appointment form-control') %>
+    </div>
+    <div class="form-group">
+    	<%= f.label(:last_name, "Last name") %>
+    	<%= f.text_field(:last_name, :class => 'appointment form-control') %>
+    </div>
+    <div class="form-group">
+      <%= f.label(:email) %>
+      <%= f.email_field(:email, :class => 'appointment form-control', :placeholder => 'Email') %>
+  </div>
+
+  <hr class="clear" />
+
+  <div>
+    <p>Job Information</p>
+    <div class="form-group">
+      <%= f.label(:type) %>
+      <%= f.select(:type, options_for_select(['Mover','Driver'], 1)) %>
+    </div>
+    <div class="form-group">
+      <%= f.label(:wage) %>
+      <%= f.text_field(:wage, :class => 'appointment form-control') %>
+    </div>
+  </div>
+
+  <hr />
+</div>

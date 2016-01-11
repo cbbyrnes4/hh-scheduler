@@ -1,0 +1,19 @@
+<% @page_title = "Delete Appointment" %>
+
+<%= link_to("<< Back to Appointments", {:action => 'index'}, :class => 'back-link') %>
+
+<div class="subjects delete">
+  <h2>Delete Subject</h2>
+
+  <%= form_for(:subject, :url => appointment_path(@appointment.id), :method => 'delete') do |f| %>
+
+    <p>Are you sure you want to permanently delete this appointment? You may want change the status to 'inactive' if the appointment has been completed.</p>
+
+    <p class="highlight reference-name">Appointment <%= @appointment.id %> for <%= @appointment.name %></p>
+
+    <div class="form-buttons">
+      <%= submit_tag("Delete Subject", :class => "btn btn-md btn-danger form-buttons") %>
+    </div>
+
+  <% end %>
+</div>
