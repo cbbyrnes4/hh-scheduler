@@ -15,6 +15,7 @@
         <th>Time</th>
         <th><span class="stack">Estimated</span> Hours</th>
         <th>Type</th>
+        <th>Capacity</th>
       </tr>
       <% @appointments_active.each do |apt| %>
       <tr data-url="<%= appointment_path(apt.id) %>" class="clickable-row hover <%= cycle('odd', 'even', name: 'stripes') %>">
@@ -22,6 +23,7 @@
         <td><%= if apt.datetime then apt.datetime.strftime('%H:%M') end %></td>
         <td><%= apt.estimated_time %></td>
         <td><%= apt.type %></td>
+        <td><%= apt.current_size %>/<%= apt.job_size %></td>
       </tr>
       <% end %>
     </table>

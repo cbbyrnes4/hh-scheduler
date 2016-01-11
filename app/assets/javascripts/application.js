@@ -13,6 +13,15 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require jquery.turbolinks
 //= require bootstrap
 //= require_tree .
 
+function initialize() {
+    $(".clickable-row").click(function() {
+        window.document.location = $(this).data("url");
+    });
+}
+
+$(document).ready(initialize);
+$(document).on('page:restore',initialize);
