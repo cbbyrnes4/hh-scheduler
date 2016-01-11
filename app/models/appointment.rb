@@ -5,6 +5,7 @@ class Appointment < ActiveRecord::Base
 
 	scope :sort_by_time, lambda { order('appointments.datetime') }
 	scope :sort_by_customer_name, lambda { order('appointments.customer_last_name', 'appointments.customer_first_name') }
+	scope :sort_by_status, lambda { order('appointments.status') }
 	scope :active, lambda { where(:status => 'active') }
 	scope :inactive, lambda { where(:status => 'inactive') }
 	scope :visible, lambda { where(:visibility => true) }

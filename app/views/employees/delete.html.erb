@@ -1,0 +1,21 @@
+<% @page_title = "Delete Employee" %>
+
+<%= link_to("<< Back to Employee", employee_path(@employee.id), :class => 'back-link') %>
+
+<div class="employees delete">
+  <h2>Delete Employee</h2>
+
+  <%= form_for(:employee, :url => employee_path(@employee.id), :method => 'delete') do |f| %>
+
+    <p class="highlight">Are you sure you want to delete employee: <%= @employee.name %>?</p>
+
+    <br />
+
+    <p>You may want change the status to 'inactive' if the employee has been terminated.</p>
+
+    <div class="form-buttons">
+      <%= submit_tag("Delete Employee", :class => "btn btn-md btn-danger form-buttons") %>
+    </div>
+
+  <% end %>
+</div>

@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
 	# add front-end validation for password and phone number later
 
 	scope :sort_name, lambda { order("users.last_name, users.first_name") }
+	scope :sort_by_status, lambda { order("users.status") }
 	scope :active, lambda { where(:status => 'active') }
 	scope :inactive, lambda { where(:status => 'inactive') }
 	scope :unconfirmed, lambda { where(:status => 'unconfirmed') }

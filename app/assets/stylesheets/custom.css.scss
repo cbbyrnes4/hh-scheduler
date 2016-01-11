@@ -55,19 +55,19 @@ tr.clickable-row { cursor: pointer; }
 /* ------------ Misc definitions ------------ */
 .highlight { font-weight: bold; color: red; }
 .right { float: right; margin-bottom: 5px; margin-right: 5px; }
-.even { background-color: rgba(255,153,0,0.6); }
+.odd { background-color: rgba(255,153,0,0.6); }
 .hidden { display: none; }
 .clear { clear: both; }
 .index { margin: 0 auto; }
 .strike { text-decoration: line-through; }
 .btn-control { float: right; }
-.form-buttons { margin-bottom: 20px; }
+.form-buttons { margin: 20px 0; }
 .group { margin-bottom: 5px; }
 h2 { font-family: 'Lato', san-serif; }
 h3 { text-align: center; font-family: 'Lato', san-serif; }
 a.action { display: block; float: right; }
 div.condense { width: 70%; margin: 0 auto; }
-div.show { display: inline; margin: 40px 0; }
+div.show { display: inline; }
 .field-with-errors { display: inline; color: red; }
 
 label {

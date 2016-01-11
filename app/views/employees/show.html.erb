@@ -53,8 +53,8 @@
         <th>Time</th>
         <th>Type</th>
       </tr>
-      <% @employee.appointments.sort_by_time.each do |apt| %>
-      <tr data-url="<%= appointment_path(apt.id) %>" class="clickable-row hover <%= ' strike' if @employee.status == 'inactive'%>">
+      <% @employee.appointments.sort_by_status.sort_by_time.each do |apt| %>
+      <tr data-url="<%= appointment_path(apt.id) %>" class="clickable-row hover <%= if apt.status == 'inactive' then ' strike' end %>">
         <td><%= if apt.datetime then apt.datetime.strftime('%m/%d/%Y') end %></td>
         <td><%= if apt.datetime then apt.datetime.strftime('%H:%M') end %></td>
         <td><%= apt.type %></td>

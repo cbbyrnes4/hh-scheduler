@@ -1,0 +1,17 @@
+<% @page_title = "Update Employee" %>
+
+<%= link_to("<< Back to Employee", employee_path(@employee.id), :class => 'back-link') %>
+
+<div class="employee edit">
+  <h2>Update Employee</h2>
+
+  <%= form_for(:employee, :url => employee_path(@employee.id), :method =>'patch') do |f| %>
+
+    <%= render(:partial => "update_form", :locals => {:f => f}) %>
+
+    <div class="form-buttons">
+      <%= submit_tag("Update Employee", :class => "btn btn-md btn-primary form-buttons") %>
+    </div>
+
+  <% end %>
+</div>

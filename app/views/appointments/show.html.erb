@@ -3,7 +3,7 @@
 <%= link_to("<< Back to Appointments", appointments_path, :class => 'back-link') %>
 <div class="btn-control">
   <%= link_to("Update Appointment", edit_appointment_path(@appointment.id), :class => "btn btn-sm btn-primary form-buttons responsive-shift") %>
-  <%= link_to("Delete Appointment", delete_appointment_path(@appointment.id), :class => "btn btn-sm btn-danger form-buttons responsive-shift") %>
+  <%= link_to("Cancel Appointment", delete_appointment_path(@appointment.id), :class => "btn btn-sm btn-danger form-buttons responsive-shift") %>
 </div>
 
 <div class="appointments show">
@@ -16,15 +16,15 @@
         <td><%= @appointment.datetime.strftime('%m/%d/%Y %H:%M') %></td>
       </tr>
       <tr>
-        <th>Customer Name</th>
+        <th>Name</th>
         <td><%= @appointment.name %></td>
       </tr>
       <tr>
-        <th>Customer Email</th>
+        <th>Email</th>
         <td><%= @appointment.email %></td>
       </tr>
       <tr>
-        <th>Customer Phone</th>
+        <th>Phone</th>
         <td><%= @appointment.phone_number %></td>
       </tr>
       <tr>
@@ -91,7 +91,7 @@
         <th>Name</th>
         <th>Email</th>
       </tr>
-      <% @appointment.employees.sort_name.each do |employee| %>
+      <% @appointment.employees.sort_by_status.sort_name.each do |employee| %>
       <tr data-url="<%= employee_path(employee.id) %>" class="clickable-row hover <%= ' strike' if employee.status == 'inactive'%>">
         <td><%= employee.type %></td>
         <td><%= employee.name %></td>

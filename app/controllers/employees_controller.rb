@@ -49,8 +49,13 @@ class EmployeesController < ApplicationController
   end
 
   def destroy
-    employee = Employee.find(params[:id]).destroy
-    flash[:success] = "Employee #{employee.id} (#{employee.name}) destroyed successfully"
+    employee = Employee.find(params[:id])
+    employee.appointments.each do |apt|
+      apt.current_size -= 1
+      apt.save
+    end
+    employee.destroy
+    flash[:success] = "Employee: #{employee.name} destroyed successfully"
     redirect_to(employees_path)
   end
 
