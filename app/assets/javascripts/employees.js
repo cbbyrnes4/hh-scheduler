@@ -4,12 +4,12 @@
 function initialize() {
 	$('#showUnconfirmed').click(function() {
   		$('#unconfirmedEmployees').toggleClass('hidden');
-  		$(this).html(($(this).text() == 'Show Unconfirmed Employees') ? 'Hide Unconfirmed Employees' : 'Show Unconfirmed Employees');
+  		$(this).html(($(this).text() == 'Show unconfirmed employees') ? 'Hide unconfirmed employees' : 'Show unconfirmed employees');
 	});
 
 	$('#showInactive').click(function() {
   		$('#inactiveEmployees').toggleClass('hidden');
-  		$(this).html(($(this).text() == 'Show Inactive Employees') ? 'Hide Inactive Employees' : 'Show Inactive Employees');
+  		$(this).html(($(this).text() == 'Show inactive employees') ? 'Hide inactive employees' : 'Show inactive employees');
 	});
 }
 

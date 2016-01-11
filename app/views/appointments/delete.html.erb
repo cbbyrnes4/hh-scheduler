@@ -7,12 +7,14 @@
 
   <%= form_for(:subject, :url => appointment_path(@appointment.id), :method => 'delete') do |f| %>
 
-    <p>Are you sure you want to permanently delete this appointment? You may want change the status to 'inactive' if the appointment has been completed.</p>
+    <p class="highlight">Are you sure you want to permanently delete appointment: Appointment <%= @appointment.id %> for <%= @appointment.name %></p>
 
-    <p class="highlight reference-name">Appointment <%= @appointment.id %> for <%= @appointment.name %></p>
+    <br />
+
+    <p>You may want change the status to 'inactive' if the appointment has been completed.</p>
 
     <div class="form-buttons">
-      <%= submit_tag("Delete Subject", :class => "btn btn-md btn-danger form-buttons") %>
+      <%= submit_tag("Delete Appointment", :class => "btn btn-md btn-danger form-buttons") %>
     </div>
 
   <% end %>

@@ -9,6 +9,7 @@
 	      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js"></script>
 	    <![endif]-->
 	</head>
+	
 	<body>
 		<div class="navbar navbar-fixed-top"> 
 			<div class="container-fluid">
@@ -34,32 +35,24 @@
 			</div>
 		</div>
 
-		<!-- Begin page content -->
 		<div class="container">
-			<% if !flash[:success].blank? %>
-			<div class="alert alert-success alert-dismissable" role="alert">
-				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-				<%= flash[:sucess] %>
+			<div>
+		  <% flash.each do |key, value| %>
+		    <div class="<%= flash_class(key) %> fade in">
+		      <a href="#" data-dismiss="alert" class="close">×</a>
+		      <%= value %>
+		    </div>
+		  <% end %>
 			</div>
-			<% end %>
-
-			<% if !flash[:error].blank? %>
-			<div class="alert alert-error" role="alert">
-				<%= flash[:error] %>
-			</div>
-			<hr class="clear" />
-			<% end %>
-
+			<!-- Begin page content -->
 			<%= yield %>
-
+			<!-- End page content -->
 		</div>
 		    
 		<footer class="footer">
 	    <div class="container">
-	      <p class="text-muted">&copy; 2016 Chaz Byrnes | <a target="_blank" href="http://www.studentagencies.com/">studentagencies.com</a></p>
+	      <p class="text-muted">&copy; <%= Time.now.year %> Chaz Byrnes | <a target="_blank" href="http://www.studentagencies.com/">studentagencies.com</a></p>
 	    </div>
 	  </footer>
-		
 	</body>
 </html>
-

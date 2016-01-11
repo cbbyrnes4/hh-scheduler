@@ -15,6 +15,7 @@
 //= require turbolinks
 //= require jquery.turbolinks
 //= require bootstrap
+//= requite bootstrap-alert
 //= require_tree .
 
 function initialize() {

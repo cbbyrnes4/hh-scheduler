@@ -4,7 +4,7 @@
 function initialize() {
 	$('#showComplete').click(function() {
   		$('#completeAppointments').toggleClass('hidden');
-  		$(this).html(($(this).text() == 'Show Completed Appointments') ? 'Hide Completed Appointments' : 'Show Completed Appointments');
+  		$(this).html(($(this).text() == 'Show Inactive Appointments') ? 'Hide Inactive Appointments' : 'Show Inactive Appointments');
 	});
 }
 $(document).ready(initialize);

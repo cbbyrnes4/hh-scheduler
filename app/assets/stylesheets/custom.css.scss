@@ -1,7 +1,7 @@
 /* ------------ All ------------ */
 /* ------------ Setup/layout definitions ------------ */
 html { position: relative; min-height: 100%; }
-body { margin-bottom: 60px; }
+body { margin-bottom: 60px; font-family: 'Lato', san-serif; }
 
 .footer {
   position: absolute;
@@ -27,7 +27,6 @@ body > .container { padding: 60px 15px 0; }
 .navbar-brand, 
 .navbar-nav li a { color: white; }
 .navbar-brand { font-family: 'Lobster', cursive; }
-.navbar-nav li a { font-family: 'Lato', san-serif; }
 li.active a { color: rgb(255,153,0); }
 li a:hover { color: rgb(255,153,0); }
 /* ------------------------------------------ */
@@ -62,13 +61,14 @@ tr.clickable-row { cursor: pointer; }
 .index { margin: 0 auto; }
 .strike { text-decoration: line-through; }
 .btn-control { float: right; }
-.form-buttons { margin-bottom: 5px; }
+.form-buttons { margin-bottom: 20px; }
+.group { margin-bottom: 5px; }
 h2 { font-family: 'Lato', san-serif; }
 h3 { text-align: center; font-family: 'Lato', san-serif; }
 a.action { display: block; float: right; }
 div.condense { width: 70%; margin: 0 auto; }
 div.show { display: inline; margin: 40px 0; }
-.alert { width: 60%; }
+.field-with-errors { display: inline; color: red; }
 
 label {
   display: block;
@@ -92,7 +92,6 @@ label {
 /* ------------------------------------------ */
 
 /* ----For app/assets/stylesheets/appointments.scss---------- */
-.group { margin-bottom: 5px; }
 
 /*input, div #appointment_type {
   display: block;

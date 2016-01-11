@@ -4,9 +4,9 @@
   <div class="condense">
     <h3>Active Appointments</h3>
     <div class="group">
-      <%= link_to("Add new Appointment", new_appointment_path, :class => "action new") %>
-      <div><%= pluralize(@appointments_active.size, 'Appointment') %> found</div>
-      <a href="#" id="showComplete" class="<%= if @appointments_inactive.size > 0 then 'show' else 'hide' end %>" id="showComplete">Show Inactive Appointments</a>
+      <%= link_to("Add new appointment", new_appointment_path, :class => "action new") %>
+      <div><%= pluralize(@appointments_active.size, 'appointment') %> found</div>
+      <a href="#" id="showComplete" class="<%= if @appointments_inactive.size > 0 then 'show' else 'hide' end %>" id="showComplete">Show inactive appointments</a>
     </div>
 
     <table class="listing table table-condensed appointment" summary="appointment list">
@@ -31,6 +31,9 @@
     <div class="hidden" id="completeAppointments">
       <% reset_cycle('stripes') %>
       <h3>Inactive Appointments</h3>
+      <div class="group">
+        <div><%= pluralize(@appointments_inactive.size, 'appointment') %> found</div>
+      </div>
       <table class="listing table table-condensed" summary="appointment list">
         <tr class="header">
           <th>Date</th>
