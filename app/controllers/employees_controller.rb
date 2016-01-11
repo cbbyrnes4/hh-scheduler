@@ -14,13 +14,45 @@ class EmployeesController < ApplicationController
     # Save the object
     if @employee.save
       # If save succeeds, redirect to the index action
-      flash[:notice] = "Employee created successfully."
-      redirect_to(:action => 'index')
+      flash[:success] = "Employee created successfully."
+      redirect_to(employees_path)
     else
       # If save fails, redisplay the form so user can fix problems
       render('new')
     end
 	end
+
+  def show
+    @employee = Employee.find(params[:id])
+  end
+
+  def edit
+    @employee = Employee.find(params[:id])
+  end
+
+  def update
+    # Find an existing object using form parameters
+    @employee = Employee.find(params[:id])
+    # Update the object
+    if @employee.update_attributes(employee_params)
+      # If update succeeds, redirect to the index action
+      flash[:success] = "Employee updated successfully."
+      redirect_to(employee_path(@employee.id))
+    else
+      # If update fails, redisplay the form so user can fix it
+      render('edit')
+    end
+  end
+
+  def delete
+    @employee = Employee.find(params[:id])
+  end
+
+  def destroy
+    employee = Employee.find(params[:id]).destroy
+    flash[:success] = "Employee #{employee.id} (#{employee.name}) destroyed successfully"
+    redirect_to(employees_path)
+  end
 
 	private
 

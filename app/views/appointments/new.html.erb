@@ -6,7 +6,7 @@
   <h2>Create Appointment</h2>
 
   <%= form_for(@appointment, :url => {:action => 'create'}, :role => "form") do |f| %>
-  <%= render(:partial => "form", :locals => {:f => f}) %>
+  	<%= render(:partial => "form", :locals => {:f => f}) %>
 
   <div class="container">
   <%= submit_tag("Create Appointment", :class => "btn btn-md btn-primary form-buttons") %>

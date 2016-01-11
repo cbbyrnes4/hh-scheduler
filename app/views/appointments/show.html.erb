@@ -92,7 +92,7 @@
         <th>Email</th>
       </tr>
       <% @appointment.employees.sort_name.each do |employee| %>
-      <tr class="hover <%= ' strike' if employee.status == 'inactive'%>">
+      <tr data-url="<%= employee_path(employee.id) %>" class="clickable-row hover <%= ' strike' if employee.status == 'inactive'%>">
         <td><%= employee.type %></td>
         <td><%= employee.name %></td>
         <td><%= employee.email %></td>

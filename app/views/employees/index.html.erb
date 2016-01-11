@@ -17,7 +17,7 @@
         <th>Email</th>
       </tr>
       <% @employees_active.each do |employee| %>
-      <tr class="hover <%= cycle('odd', 'even', name: 'stripes' ) %><%= ' strike' if employee.status == 'inactive'%>">
+      <tr data-url="<%= employee_path(employee.id) %>" class="clickable-row hover <%= cycle('odd', 'even', name: 'stripes' ) %><%= ' strike' if employee.status == 'inactive'%>">
         <td><%= employee.type %></td>
         <td><%= employee.name %></td>
         <td><%= employee.email %></td>
@@ -35,7 +35,7 @@
           <th>Email</th>
         </tr>
         <% @employees.unconfirmed.sort_by_type.sort_name.each do |employee| %>
-        <tr class="hover <%= cycle('odd', 'even', name: 'stripes') %>">
+        <tr data-url="<%= employee_path(employee.id) %>" class="clickable-row hover <%= cycle('odd', 'even', name: 'stripes') %>">
           <td><%= employee.type %></td>
           <td><%= employee.name %></td>
           <td><%= employee.email %></td>
@@ -54,7 +54,7 @@
           <th>Email</th>
         </tr>
         <% @employees_inactive.each do |employee| %>
-        <tr class="hover <%= cycle('odd', 'even', name: 'stripes') %>">
+        <tr data-url="<%= employee_path(employee.id) %>" class="clickable-row hover <%= cycle('odd', 'even', name: 'stripes') %>">
           <td><%= employee.type %></td>
           <td><%= employee.name %></td>
           <td><%= employee.email %></td>

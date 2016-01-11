@@ -1,0 +1,66 @@
+<% @page_title = "Show Employee" %>
+
+<%= link_to("<< Back to Employees", employees_path, :class => 'back-link') %>
+<div class="btn-control">
+  <%= link_to("Update Employee", edit_employee_path(@employee.id), :class => "btn btn-sm btn-primary form-buttons responsive-shift") %>
+  <%= link_to("Delete Employee", delete_employee_path(@employee.id), :class => "btn btn-sm btn-danger form-buttons responsive-shift") %>
+</div>
+
+<div class="employees show">
+  <div class="condense">
+    <h2>Show Employee</h2>
+
+    <table class="table table-bordered table-condensed" summary="emloyee detail view">
+      <tr>
+        <th>Name</th>
+        <td><%= @employee.name %></td>
+      </tr>
+      <tr>
+        <th>Role</th>
+        <td><%= @employee.type %>
+      </tr>
+      <tr>
+        <th>Email</th>
+        <td><%= @employee.email %></td>
+      </tr>
+      <tr>
+        <th>Phone Number</th>
+        <td><%= @employee.phone_number %></td>
+      </tr>
+      <tr>
+        <th>Wage</th>
+        <td><%= @employee.wage %></td>
+      </tr>
+      <tr>
+        <th>Status</th>
+        <td><%= @employee.status %></td>
+      </tr>
+      <tr>
+        <th>Created At</th>
+        <td><%= @employee.created_at.strftime('%m/%d/%Y %H:%M') %></td>
+      </tr>
+      <tr>
+        <th>Updated At</th>
+        <td><%= @employee.updated_at.strftime('%m/%d/%Y %H:%M') %></td>
+      </tr>
+    </table>
+
+    <div class="<%= if @employee.appointments.size > 0 then 'show' else 'hide' end %>">
+      <h3>Appointments</h3>
+      <table class="listing table table-condensed" summary="active appointment list">
+      <tr class="header">
+        <th>Date</th>
+        <th>Time</th>
+        <th>Type</th>
+      </tr>
+      <% @employee.appointments.sort_by_time.each do |apt| %>
+      <tr data-url="<%= appointment_path(apt.id) %>" class="clickable-row hover <%= ' strike' if @employee.status == 'inactive'%>">
+        <td><%= if apt.datetime then apt.datetime.strftime('%m/%d/%Y') end %></td>
+        <td><%= if apt.datetime then apt.datetime.strftime('%H:%M') end %></td>
+        <td><%= apt.type %></td>
+      </tr>
+      <% end %>
+      </table>
+    </div>
+  </div>
+</div>

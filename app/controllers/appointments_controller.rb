@@ -13,7 +13,7 @@ class AppointmentsController < ApplicationController
     # Save the object
     if @appointment.save
       # If save succeeds, redirect to the index action
-      flash[:notice] = "Appointment created successfully."
+      flash[:success] = "Appointment created successfully."
       redirect_to(appointments_path)
     else
       # If save fails, redisplay the form so user can fix problems
@@ -35,7 +35,7 @@ class AppointmentsController < ApplicationController
     # Update the object
     if @appointment.update_attributes(appointment_params)
       # If update succeeds, redirect to the index action
-      flash[:notice] = "Appointment updated successfully."
+      flash[:success] = "Appointment updated successfully."
       redirect_to(appointment_path(@appointment.id))
     else
       # If update fails, redisplay the form so user can fix it
@@ -49,7 +49,7 @@ class AppointmentsController < ApplicationController
 
   def destroy
     appointment = Appointment.find(params[:id]).destroy
-    flash[:notice] = "Appointment #{appointment.id} for #{appointment.name} destroyed successfully"
+    flash[:success] = "Appointment #{appointment.id} for #{appointment.name} destroyed successfully"
     redirect_to(appointments_path)
   end
 

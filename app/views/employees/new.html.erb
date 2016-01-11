@@ -6,7 +6,7 @@
   <h2>Create Employee</h2>
 
   <%= form_for(@employee, :url => {:action => 'create'}, :role => "form") do |f| %>
-  <%= render(:partial => "form", :locals => {:f => f}) %>
+  	<%= render(:partial => "form", :locals => {:f => f}) %>
 
   <div class="container">
   <%= submit_tag("Create Employee", :class => "btn btn-md btn-primary form-buttons") %>
