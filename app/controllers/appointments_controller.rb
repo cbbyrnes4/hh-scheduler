@@ -31,7 +31,16 @@ class AppointmentsController < ApplicationController
 
   def update
     # Find an existing object using form parameters
-    @appointment = Appointment.find(params[:id])
+    @appointment = Appointment.find(params[:id]) 
+
+    # if the job size increases then put appointment back on the feed
+    # if appointment changes to active then put appointment back on the feed
+    if appointment_params[:job_size].to_i > @appointment.current_size.to_i and appointment_params[:status] == 'active'
+      @appointment.visibility = true
+    else
+      @appointment.visibility = false
+    end
+
     # Update the object
     if @appointment.update_attributes(appointment_params)
       # If update succeeds, redirect to the index action

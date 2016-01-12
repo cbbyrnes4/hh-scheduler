@@ -21,7 +21,7 @@ class Appointment < ActiveRecord::Base
 	validates :zip, :presence => true
 	validates :job_size, :presence => true, :numericality => { :greater_than_or_equal_to => 2, :less_than_or_equal_to => 7 }
 	validates :current_size, :presence => true
-	validates :current_size, :numericality => { :less_than_or_equal_to => :job_size }
+	validates :job_size, :numericality => { :greater_than_or_equal_to => :current_size, :message => " must be greater than or equal to the current size of the appointment." }
 	validates :email, :format => EMAIL_REGEX
 	validates :phone_number, :presence => true
 
